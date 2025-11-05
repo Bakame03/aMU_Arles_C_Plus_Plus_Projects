@@ -1,2 +1,2 @@
-# C-_Projects
+# C_Plus_Plus_Projects
 A folder with usefull library of C++ functions and exercises 
