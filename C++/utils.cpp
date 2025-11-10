@@ -4,6 +4,20 @@
 #include <vector>
 #include <cmath>
 
+void echange2(double * a, double * b) {
+    if(*a > *b) {
+        double temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+}
+
+void ordonne3(double * a, double * b, double * c) {
+    echange2(a, b);
+    echange2(a, c);
+    echange2(b, c);
+}
+
 
 void reverseOrdreCaractere(char* str, int length) {
     int start = 0;
