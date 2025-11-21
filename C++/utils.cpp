@@ -3,6 +3,87 @@
 #include "utils.hpp"
 #include <vector>
 #include <cmath>
+#include <algorithm>
+
+void afficheListeIntTableauCroissantWithoutOccurencesUsingSTD_SORT(const std::vector<int>& tab) {
+    std::vector<int> sortedTab = tab; 
+    std::sort(sortedTab.begin(), sortedTab.end());
+    std::cout << "Elements du tableau en ordre croissant sans occurrences (utilisant std::sort) :" << std::endl;
+    if (!sortedTab.empty()) {
+        std::cout << sortedTab[0] << " ";
+        for (size_t i = 1; i < sortedTab.size(); ++i) {
+            if (sortedTab[i] != sortedTab[i - 1]) {
+                std::cout << sortedTab[i] << " ";
+            }
+        }
+    }
+    std::cout << std::endl;
+}
+
+void afficheListeIntTableauCroissantWithoutOccurences(const std::vector<int>& tab) {
+    std::vector<int> sortedTab = tab; 
+    for (size_t i = 0; i < sortedTab.size(); ++i) {
+        for (size_t j = i + 1; j < sortedTab.size(); ++j) {
+            if (sortedTab[i] > sortedTab[j]) {
+                int temp = sortedTab[i];
+                sortedTab[i] = sortedTab[j];
+                sortedTab[j] = temp;
+            }
+        }
+    }
+    std::cout << "Elements du tableau en ordre croissant sans occurrences :" << std::endl;
+    if (!sortedTab.empty()) {
+        std::cout << sortedTab[0] << " ";
+        for (size_t i = 1; i < sortedTab.size(); ++i) {
+            if (sortedTab[i] != sortedTab[i - 1]) {
+                std::cout << sortedTab[i] << " ";
+            }
+        }
+    }
+    std::cout << std::endl;
+}
+
+void afficheListeIntTableauCroissant(const std::vector<int>& tab) {
+    std::vector<int> sortedTab = tab; 
+    for (size_t i = 0; i < sortedTab.size(); ++i) {
+        for (size_t j = i + 1; j < sortedTab.size(); ++j) {
+            if (sortedTab[i] > sortedTab[j]) {
+                int temp = sortedTab[i];
+                sortedTab[i] = sortedTab[j];
+                sortedTab[j] = temp;
+            }
+        }
+    }
+    std::cout << "Elements du tableau en ordre croissant :" << std::endl;
+    for (int value : sortedTab) {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
+}
+
+void afficheListeIntTableau(const std::vector<int>& tab){
+    std::cout << "Elements du tableau :" << std::endl;
+    for (int value : tab) {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
+}
+
+void getListeInt(std::vector<int>& listeInt) {
+    std::string valeur;
+    int n;
+    do
+    {
+        std::cout << "Entrez un entier : ";
+        std::getline(std::cin, valeur);
+        if (valeur.empty()) {
+            n = 0;
+        } else {
+            n = std::stoi(valeur);
+        }
+        listeInt.push_back(n);
+    } while (valeur.empty() == false);
+}
 
 void echange2(double * a, double * b) {
     if(*a > *b) {

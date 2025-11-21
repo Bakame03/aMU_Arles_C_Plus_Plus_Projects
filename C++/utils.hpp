@@ -13,6 +13,11 @@ struct Cercle{
     double r;
 };
 
+void afficheListeIntTableauCroissantWithoutOccurencesUsingSTD_SORT(const std::vector<int>& tab);
+void afficheListeIntTableauCroissantWithoutOccurences(const std::vector<int>& tab);
+void afficheListeIntTableauCroissant(const std::vector<int>& tab);
+void afficheListeIntTableau(const std::vector<int>& tab);
+void getListeInt(std::vector<int>& listeInt);
 void ordonne3(double * a, double * b, double * c);
 void echange2(double * a, double * b);
 void reverseOrdreCaractere(char* str, int length);
