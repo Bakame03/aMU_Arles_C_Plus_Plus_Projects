@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/bakame03/Documents/BUT1/BUT1-WORKSPACE/C_Plus_Plus_Projects",
+    "command": "/usr/bin/g++ -std=gnu++23 -I/home/bakame03/Documents/BUT1/BUT1-WORKSPACE/C_Plus_Plus_Projects -c C++/ExpectExercises/test_expected.cpp -o C++/ExpectExercises/test_expected.o",
+    "file": "/home/bakame03/Documents/BUT1/BUT1-WORKSPACE/C_Plus_Plus_Projects/C++/ExpectExercises/test_expected.cpp"
+  }
+]
