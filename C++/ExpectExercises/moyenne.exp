@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+# Configure expect pour faire des tests
+set timeout 3
+expect_after timeout { send_user "\nEchec des tests !\n" ; exit 1 }
+
+# Lance le programme C++ compilé.
+spawn ./moyenne
+
+# Déroulé du programme
+expect "Combien de valeurs ?>"
+send "3\n"
+expect "Valeur ?>"
+send "8.5\n"
+expect "Valeur ?>"
+send "11.5\n"
+expect "Valeur ?>"
+send "10.0\n"
+## The program prints "La moyenne est 10." (no "de") — accept either form using a regexp
+expect -re "La moyenne est( de)? 10\."
+
+# On s'attend à ce que le programme ferme la communication.
+expect eof
+
+# Message de fin pour le testeur
+send_user "Test réussi.\n"
