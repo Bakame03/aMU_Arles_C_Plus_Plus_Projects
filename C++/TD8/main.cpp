@@ -8,5 +8,6 @@ int main() {
     saisirNbColors(nbColors);
     saisirColors(colors, nbColors);
     afficherColors_rbg_to_hex(colors);
+    afficherColors_rbg_to_hsl(colors);
     return 0;
 }

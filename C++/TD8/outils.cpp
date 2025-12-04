@@ -53,21 +53,10 @@ void rgbToHex(const RGB &color) {
     
     for(int i = 0; i < 3; i++) {
         unsigned int v = values[i];
-
-        // Ensure value is within 0-255 range
-        if (v < 0) v = 0;
-        if (v > 255) v = 255;
-
-        // 1. Find the second digit (remainder)
         int v0 = v % 16;
-        
-        // 2. Find the first digit (integer division)
-        // Note: In C++, integer division drops decimals, so (v-v0)/16 is same as v/16
         int v1 = (v - v0) / 16; 
-
-        // 3. Use the indices to pick from the table
-        hexString += hexTable[v1]; // First digit (e.g., the 'F' in F0)
-        hexString += hexTable[v0]; // Second digit (e.g., the '0' in F0)
+        hexString += hexTable[v1]; 
+        hexString += hexTable[v0]; 
     }
     
     std::cout << hexString << std::endl;
@@ -78,5 +67,34 @@ void afficherColors_rbg_to_hex(const std::vector<RGB> &colors) {
     for (size_t i = 0; i < colors.size(); ++i) {
         rgbToHex(colors[i]);
     }
+}
+
+void rgbToHsl(const RGB &color) {
+    double r = color.r / 255.0;
+    double g = color.g / 255.0;
+    double b = color.b / 255.0;
+
+    double max = std::max({r, g, b});
+    double min = std::min({r, g, b});
+    double h, s, l;
+    l = (max + min) / 2.0;
+
+    if (max == min) {
+        h = s = 0; // achromatic
+    } else {
+        double d = max - min;
+        s = l > 0.5 ? d / (2.0 - max - min) : d / (max + min);
+        if (max == r) {
+            h = (g - b) / d + (g < b ? 6 : 0);
+        } else if (max == g) {
+            h = (b - r) / d + 2;
+        } else {
+            h = (r - g) / d + 4;
+        }
+        h /= 6;
+    }
+
+    h *= 360; // Convert to degrees
+    std::cout << "HSL(" << h << ", " << s * 100 << "%, " << l * 100 << "%)" << std::endl;
 }
 

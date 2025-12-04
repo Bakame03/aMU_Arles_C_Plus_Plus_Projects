@@ -20,5 +20,6 @@ using Hex = std::string;
 void saisirNbColors(unsigned &nbColors);
 void saisirColors(std::vector<RGB> &colors, unsigned nbColors);
 void afficherColors_rbg_to_hex(const std::vector<RGB> &colors);
+void afficherColors_rbg_to_hsl(const std::vector<RGB> &colors);
 
 #endif // __OUTILS__
