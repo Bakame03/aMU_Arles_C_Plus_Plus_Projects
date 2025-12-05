@@ -74,20 +74,20 @@ void rgbToHsl(const RGB &color) {
     double g = color.g / 255.0;
     double b = color.b / 255.0;
 
-    double max = std::max({r, g, b});
+    double max = std::max({r, g, b}); //to verify apparement le max et min c'est deux valeurs!!!!!!!
     double min = std::min({r, g, b});
     double h, s, l;
     l = (max + min) / 2.0;
 
     if (max == min) {
-        h = s = 0; // achromatic
+        h = s = 0; 
     } else {
         double d = max - min;
         s = l > 0.5 ? d / (2.0 - max - min) : d / (max + min);
         if (max == r) {
             h = (g - b) / d + (g < b ? 6 : 0);
         } else if (max == g) {
-            h = (b - r) / d + 2;
+            h = (b - r) / d + 2; //to verify here apparement we use fmod() !!!!! to  get division entierre!!!!
         } else {
             h = (r - g) / d + 4;
         }
