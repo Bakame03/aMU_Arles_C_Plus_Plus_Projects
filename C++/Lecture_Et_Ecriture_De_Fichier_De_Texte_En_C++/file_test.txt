@@ -1,0 +1,2 @@
+Cette phrase est ecrite dans le fichier.
+cette phrase c'est pour faire les tests !!!
