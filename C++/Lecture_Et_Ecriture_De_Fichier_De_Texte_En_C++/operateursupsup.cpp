@@ -4,10 +4,10 @@
 
 int main() {
     std::ifstream monfichier("file_test.txt");
-    std::vector<double> tableau;
-    double valeur;
-    while(monfichier >> valeur) 
-        tableau.push_back(valeur);
-    std::cout << "Il y a " << tableau.size() << " valeurs dans le tableau." << std::endl;
+    std::vector<std::string> tableau;
+    std::string content;
+    while(std::getline(monfichier, content))
+        tableau.push_back(content);
+    std::cout << "Il y a " << tableau.size() << " lignes dans le tableau." << std::endl;
     return 0;
 }
