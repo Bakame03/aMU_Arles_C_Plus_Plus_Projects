@@ -29,16 +29,7 @@ int main() {
         } else if (nombreDeLettres != 0) {
             int compteur = 0;
             for (const auto& mot : motsFrancais) {
-                // Count UTF-8 characters (letters only, skip spaces and punctuation)
-                std::size_t count = 0;
-                for (unsigned char c : mot) {
-                    if (!std::isspace(c) && c != '\'' && c != '-') {
-                        if ((c & 0xC0) != 0x80) {  // Leading byte, not continuation
-                            count++;
-                        }
-                    }
-                }
-                if (count == static_cast<size_t>(nombreDeLettres)) {
+                if (static_cast<int>(mot.length()) == nombreDeLettres) {
                     compteur++;
                 }
             }
