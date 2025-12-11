@@ -1,2 +1,4 @@
-# ignorer les extensions .o
+# ignorer les extensions .o (partout dans le workspace)
+**/*.o
 *.o
+
