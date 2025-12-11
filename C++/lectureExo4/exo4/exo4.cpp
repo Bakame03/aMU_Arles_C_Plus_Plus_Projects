@@ -47,7 +47,7 @@ ostream& sauveUneFiche(ostream& ofs,const Fiche& f)
 
 ostream& exporteUneFicheCSV(ostream& ofs,const Fiche& f)
 {
-    // À compléter !
+    ofs << f.nom << ";" << f.prenom << ";" << f.taille << " " << (f.fille?'F':'H') << ";" << "(" << f.commentaire << ")" << ";" << f.image << endl;
     return ofs;
 }
 
@@ -85,25 +85,33 @@ ostream& afficheAnnuaire(const vector<Fiche>& fiches,ostream& ofs)
 
 void sauveAnnuaire(const vector<Fiche>& fiches,fs::path& fname)
 {
-    ofstream monfichier(fname, ios::app);
+    ofstream monfichier(fname);
     if(!monfichier.is_open())
     {
         cerr << "Impossible d'ouvrir le fichier " << fname << endl;
         return;
     }else {
-        for(const auto& f : fiches)
-            sauveUneFiche(monfichier,f);
+        for(size_t i=0;i<(fiches.size()-1);i++)
+            sauveUneFiche(monfichier,fiches[i]);
     }
 }
 
 void exporteAnnuaireCSV(const vector<Fiche>& fiches,fs::path& fname)
 {
-    // À compléter !
+    ofstream monfichier(fname);
+    if(!monfichier.is_open())
+    {
+        cerr << "Impossible d'ouvrir le fichier " << fname << endl;
+        return;
+    }
+    monfichier << "Nom;Prenom;Taille Et Sexe;Commentaire;Photo Path" << endl;
+    for(size_t i=0;i<(fiches.size()-1);i++)
+        exporteUneFicheCSV(monfichier,fiches[i]);
 }
 
 void exporteAnnuaireHTML(const vector<Fiche>& fiches,fs::path& fname)
 {
-    // À compléter !
+
 }
 
 void ajouteFiche(vector<Fiche>& fiches)
