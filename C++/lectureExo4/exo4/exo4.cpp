@@ -53,7 +53,12 @@ ostream& exporteUneFicheCSV(ostream& ofs,const Fiche& f)
 
 ostream& exporteUneFicheHTML(ostream& ofs,const Fiche& f)
 {
-    // À compléter !
+    ofs << "<div class=\"fiche\">\n"
+        << "\t<h2>" << f.nom << ", " << f.prenom << "</h2>\n"
+        << "\t<p>Taille : " << f.taille << "m " << (f.fille?"Femme":"Homme") << "</p>\n"
+        << "\t<p>Commentaire : " << f.commentaire << "</p>\n"
+        << "\t<img src=\"" << f.image << "\" alt=\"Photo de " << f.prenom << " " << f.nom << "\">\n"
+        << "</div>\n";
     return ofs;
 }
 
@@ -111,7 +116,16 @@ void exporteAnnuaireCSV(const vector<Fiche>& fiches,fs::path& fname)
 
 void exporteAnnuaireHTML(const vector<Fiche>& fiches,fs::path& fname)
 {
-
+    ofstream monfichier(fname);
+    if(!monfichier.is_open())
+    {
+        cerr << "Impossible d'ouvrir le fichier " << fname << endl;
+        return;
+    }
+    monfichier << "<!DOCTYPE html>\n<html>\n<head>\n\t<title>Annuaire</title>\n</head>\n<body>\n";
+    for(size_t i=0;i<(fiches.size()-1);i++)
+        exporteUneFicheHTML(monfichier,fiches[i]);
+    monfichier << "</body>\n</html>\n";
 }
 
 void ajouteFiche(vector<Fiche>& fiches)
