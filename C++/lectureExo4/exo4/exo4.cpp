@@ -37,7 +37,11 @@ ostream& afficheUneFiche(ostream& ofs,const Fiche& f)
 
 ostream& sauveUneFiche(ostream& ofs,const Fiche& f)
 {
-    // À compléter !
+    ofs << f.nom << endl
+        << f.prenom << endl
+        << f.taille << ' ' << (f.fille?'F':'H') << endl
+        << f.commentaire << endl
+        << f.image << endl;
     return ofs;
 }
 
@@ -77,14 +81,14 @@ ostream& afficheAnnuaire(const vector<Fiche>& fiches,ostream& ofs)
 
 void sauveAnnuaire(const vector<Fiche>& fiches,fs::path& fname)
 {
-    ofstream monfichier(fname);
+    ofstream monfichier(fname, ios::app);
     if(!monfichier.is_open())
     {
         cerr << "Impossible d'ouvrir le fichier " << fname << endl;
         return;
     }else {
-        // À compléter !
-        monfichier << fiches.size() << " fiches sauvegardées." << endl;
+        for(const auto& f : fiches)
+            sauveUneFiche(monfichier,f);
     }
 }
 
