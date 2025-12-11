@@ -75,8 +75,12 @@ void chargeAnnuaire(vector<Fiche>& fiches,fs::path& fname)
 
 ostream& afficheAnnuaire(const vector<Fiche>& fiches,ostream& ofs)
 {
-    // À compléter !
-    return ofs; 
+    for(size_t i=0;i<(fiches.size()-1);++i)
+    {
+        ofs << "Fiche #" << (i+1) << " :" << endl;
+        afficheUneFiche(ofs,fiches[i]);
+    }
+    return ofs;
 }
 
 void sauveAnnuaire(const vector<Fiche>& fiches,fs::path& fname)
