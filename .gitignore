@@ -4,16 +4,6 @@
 .vscode/
 # ignorer les dossiers de build
 build/
-dist/
-./C++/build/
-**/C++/build/
-# ignorer les fichiers binaires
-*.exe
-# ignorer les fichiers de configuration d'environnement
-.env
-.env.local
-.env.*.local
-compile_commands.json
 
 
 
