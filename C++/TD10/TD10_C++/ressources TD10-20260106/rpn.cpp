@@ -68,13 +68,19 @@ namespace rpn {
     Expression infixToPostfix(const Expression& infix_expression){
         Expression postfix_expression;
         Expression pile;
+        Expression prioriteOperator = {"*", "/", "+", "-"};
         
         for(const Token& token : infix_expression){
             if(isNumeric(token)){
                 postfix_expression.push_back(token);
             }
             else if(isValidOperator(token)){
-                if(pile.back() == "+" || pile.back() == "-" || pile.back() == "*" || pile.back() == "/"){}
+                Token op_top;
+                if(!pile.empty()){
+                    op_top = pile.back();
+                }
+                while(isValidOperator(op_top)){
+                }
             }
             else if(token == "(" || token == ")"){
             }
