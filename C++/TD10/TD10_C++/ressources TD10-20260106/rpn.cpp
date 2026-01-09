@@ -76,17 +76,49 @@ namespace rpn {
             }
             else if(isValidOperator(token)){
                 Token op_top;
-                if(!pile.empty()){
+                if(!pile.empty())
+                    op_top = pile.back();
+                do{
+                    size_t token_prio = 0;
+                    size_t op_top_prio = 0;
+                    for(size_t i = 0; i < prioriteOperator.size(); i++){
+                        if(prioriteOperator[i] == token){
+                            token_prio = i;
+                        }
+                        if(prioriteOperator[i] == op_top){
+                            op_top_prio = i;
+                        }
+                    }
+                    if(op_top_prio >= token_prio){
+                        postfix_expression.push_back(op_top);
+                        pile.pop_back();
+                        if(!pile.empty())
+                            op_top = pile.back();
+                        else
+                            break;
+                    }
+                    else{
+                        break;
+                    }
+                }while(isValidOperator(op_top));
+                pile.push_back(token);
+            }
+            else if(token == "("){
+                pile.push_back(token);
+            }
+            else if(token == ")"){
+                Token op_top = pile.back();
+                while(op_top != "("){
+                    postfix_expression.push_back(op_top);
+                    pile.pop_back();
                     op_top = pile.back();
                 }
-                while(isValidOperator(op_top)){
-                }
-            }
-            else if(token == "(" || token == ")"){
+                pile.pop_back();
             }
         }
 
         return postfix_expression;
+
     }
 
 } // namespace rpn
