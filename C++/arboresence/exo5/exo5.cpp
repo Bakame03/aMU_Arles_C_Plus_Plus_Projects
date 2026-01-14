@@ -51,8 +51,7 @@ size_t total_population_villes(const vector<Ville>& villes)
     for (const Ville& villex : villes) {
         total += villex.population;
     }
-    return total;   
-    return 0;
+    return total;
 }
 
 
