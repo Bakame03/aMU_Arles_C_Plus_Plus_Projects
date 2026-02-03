@@ -58,3 +58,17 @@ Polynome& Polynome::operator-=(const Polynome& p) {
     }
     return *this;
 }
+
+Polynome Polynome::deriver() const {
+    if (degre == 0) {
+        double zeroCoef[1] = {0.0};
+        return Polynome(0, zeroCoef);
+    }
+    double* newCoef = new double[degre];
+    for (unsigned int i = 1; i <= degre; i++) {
+        newCoef[i - 1] = coef[i] * i;
+    }
+    Polynome derivedPoly(degre - 1, newCoef);
+    delete[] newCoef;
+    return derivedPoly;
+}

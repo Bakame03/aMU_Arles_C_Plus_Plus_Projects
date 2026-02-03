@@ -13,6 +13,7 @@ public:
     ~Polynome();
     Polynome& operator+=(const Polynome& p);
     Polynome& operator-=(const Polynome& p);
+    Polynome deriver() const;
 };
 
 #endif 
