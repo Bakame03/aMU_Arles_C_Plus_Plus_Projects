@@ -74,12 +74,10 @@ Polynome Polynome::deriver() const {
 }
 
 Polynome& Polynome::operator=(const Polynome& p) {
-    if (this != &p) {
-        delete[] coef;
-        degre = p.degre;
-        coef = new double[degre + 1];
-        for (unsigned int i = 0; i <= degre; ++i) 
-            coef[i] = p.coef[i];
-    }
+    delete[] coef;
+    degre = p.degre;
+    coef = new double[degre + 1];
+    for (unsigned int i = 0; i <= degre; ++i) 
+        coef[i] = p.coef[i];
     return *this;
-}
+} 
