@@ -12,7 +12,7 @@ public:
     inline unsigned int getDegre() const { return degre; }
     ~Polynome();
     Polynome& operator+=(const Polynome& p);
-    
+    Polynome& operator-=(const Polynome& p);
 };
 
 #endif 

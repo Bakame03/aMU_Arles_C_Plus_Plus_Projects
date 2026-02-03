@@ -41,3 +41,20 @@ Polynome& Polynome::operator+=(const Polynome& p) {
     }
     return *this;
 }
+
+Polynome& Polynome::operator-=(const Polynome& p) {
+    if (p.degre > degre) {
+        double* newCoef = new double[p.degre + 1];
+        for (unsigned int i = 0; i <= degre; i++)
+            newCoef[i] = coef[i] - p.coef[i];
+        for (unsigned int i = degre + 1; i <= p.degre; i++)
+            newCoef[i] = -p.coef[i];
+        delete[] coef;
+        coef = newCoef;
+        degre = p.degre;
+    } else {
+        for (unsigned int i = 0; i <= p.degre; i++)
+            coef[i] -= p.coef[i];
+    }
+    return *this;
+}
