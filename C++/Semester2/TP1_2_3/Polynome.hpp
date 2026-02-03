@@ -14,7 +14,6 @@ public:
     Polynome& operator+=(const Polynome& p);
     Polynome& operator-=(const Polynome& p);
     Polynome deriver() const;
-    //affectation
     Polynome& operator=(const Polynome& p);
 };
 
