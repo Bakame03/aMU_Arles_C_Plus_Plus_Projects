@@ -28,6 +28,10 @@ public:
     double operator()(double x);
 };
 
+// To do:
+// - implement integration method(integrale) that returns the indefinite integral of the polynomial
+// - simplification de chaque polynome a chaque operatioin 
+//      pouvant produire un polynôme dont les monômes de plus haut degré peuvent être nuls 
 // - implement operator -
 // - implement operator *
 // - implement operator / (qui donne le polynome quotient)
