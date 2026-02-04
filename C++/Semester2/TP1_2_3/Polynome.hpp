@@ -17,6 +17,13 @@ public:
     friend bool operator==(const Polynome& p1, const Polynome& p2);
     friend Polynome operator+(const Polynome& p1, const Polynome& p2);
     friend std::ostream& operator<<(std::ostream& os, const Polynome& p);
+    inline const double& operator[](const int i) {
+        if (i <= degre)
+            return coef[i];
+        else {
+            throw std::out_of_range("Index out of range");
+        }
+    }
 };
 
 // - implement operator -
