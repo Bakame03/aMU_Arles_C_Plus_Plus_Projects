@@ -80,4 +80,27 @@ Polynome& Polynome::operator=(const Polynome& p) {
     for (unsigned int i = 0; i <= degre; i++) 
         coef[i] = p.coef[i];
     return *this;
-} 
+}
+
+bool operator==(const Polynome& p1, const Polynome& p2) {
+    if (p1.degre != p2.degre) 
+        return false;
+    for (unsigned int i = 0; i <= p1.degre; i++) {
+        if (p1.coef[i] != p2.coef[i]) 
+            return false;
+    }
+    return true;
+}
+
+Polynome operator+(const Polynome& p1, const Polynome& p2) {
+    Polynome big = (p1.degre >= p2.degre) ? p1 : p2;
+    Polynome small = (p1.degre < p2.degre) ? p1 : p2;
+    Polynome p3(big);
+    // first way (Eric Remy style)
+    // for (unsigned int i = 0; i <= small.degre; i++) {
+    //     p3.coef[i] += small.coef[i];
+    // }
+    // second way (Eric Remy style)
+    p3 += small;
+    return p3;
+}

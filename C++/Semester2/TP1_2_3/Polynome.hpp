@@ -15,6 +15,14 @@ public:
     Polynome& operator-=(const Polynome& p);
     Polynome deriver() const;
     Polynome& operator=(const Polynome& p);
+    inline unsigned int getDegre() const { return degre; }
+    friend bool operator==(const Polynome& p1, const Polynome& p2);
+    friend Polynome operator+(const Polynome& p1, const Polynome& p2);
 };
+
+// - implement operator -
+// - implement operator *
+// - implement operator / (qui donne le polynome quotient)
+// - implement operator % (qui donne le polynome reste)
 
 #endif 
