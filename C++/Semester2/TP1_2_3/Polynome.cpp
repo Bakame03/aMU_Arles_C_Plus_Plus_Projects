@@ -104,3 +104,9 @@ Polynome operator+(const Polynome& p1, const Polynome& p2) {
     p3 += small;
     return p3;
 }
+
+std::ostream& operator<<(std::ostream& os, const Polynome& p){
+    for(unsigned int i = p.degre+1; i > 0; i--)
+        os << "+" << p.coef[i-1] << "x^" << i-1 << " ";
+    return os;
+}
