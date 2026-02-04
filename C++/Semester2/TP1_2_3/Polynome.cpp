@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include "Polynome.hpp"
 
 Polynome::Polynome(unsigned int _degre, double _coef[])
@@ -109,4 +110,12 @@ std::ostream& operator<<(std::ostream& os, const Polynome& p){
     for(unsigned int i = p.degre+1; i > 0; i--)
         os << "+" << p.coef[i-1] << "x^" << i-1 << " ";
     return os;
+}
+
+double Polynome::operator()(double x) {
+    double result = 0.0;
+    for (unsigned int i = 0; i <= degre; i++) {
+        result += coef[i] * pow(x, i);
+    }
+    return result;
 }

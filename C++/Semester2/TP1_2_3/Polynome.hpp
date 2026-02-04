@@ -1,5 +1,6 @@
 #ifndef __POLYNOME_HPP__
 #define __POLYNOME_HPP__
+
 class Polynome {
 private:
     unsigned int degre;
@@ -24,6 +25,7 @@ public:
             throw std::out_of_range("Index out of range");
         }
     }
+    double operator()(double x);
 };
 
 // - implement operator -
@@ -37,5 +39,5 @@ public:
 //     - n'afficher que '-' a la place du coefficient lorsqu'il vaut -1
 //     - ne pas afficher 'x^0' pour le monome constant 
 //     - quand le polynome est constant (c'est a dire de degre 0), afficher seulement la constante
-
+// - enhance operator () to use Horner's method for polynomial evaluation (without using std::pow)
 #endif 
