@@ -6,7 +6,7 @@ private:
     unsigned int degre;
     double* coef;
 public:
-    Polynome(unsigned int _degre, const double _coef[]);
+    Polynome(unsigned int _degre, double _coef[]);
     ~Polynome();
     Polynome() = delete;
     Polynome(const Polynome& p);
@@ -26,7 +26,11 @@ public:
         }
     }
     double operator()(double x);
+    friend void afficher(Polynome* tab_polynomes, int size);
 };
+
+
+
 
 // To do:
 // - implement integration method(integrale) that returns the indefinite integral of the polynomial

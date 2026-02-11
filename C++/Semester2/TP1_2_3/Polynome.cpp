@@ -119,3 +119,12 @@ double Polynome::operator()(double x) {
     }
     return result;
 }
+
+void afficher(Polynome* tab_polynomes, int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < tab_polynomes[i].degre + 1; j++) {
+            std::cout << tab_polynomes[i].coef[j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
