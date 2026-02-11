@@ -1,0 +1,52 @@
+\doxysection{Polynome.\+hpp}
+\hypertarget{Polynome_8hpp_source}{}\label{Polynome_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_POLYNOME\_HPP\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_POLYNOME\_HPP\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }Polynome\ \{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ degre;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{double}*\ coef;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ Polynome(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_degre,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \_coef[]);}
+\DoxyCodeLine{00010\ \ \ \ \ \string~Polynome();}
+\DoxyCodeLine{00011\ \ \ \ \ Polynome()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00012\ \ \ \ \ Polynome(\textcolor{keyword}{const}\ Polynome\&\ p);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ getDegre()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ degre;\ \}}
+\DoxyCodeLine{00014\ \ \ \ \ Polynome\&\ operator+=(\textcolor{keyword}{const}\ Polynome\&\ p);}
+\DoxyCodeLine{00015\ \ \ \ \ Polynome\&\ operator-\/=(\textcolor{keyword}{const}\ Polynome\&\ p);}
+\DoxyCodeLine{00016\ \ \ \ \ Polynome\ deriver()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \ \ Polynome\&\ operator=(\textcolor{keyword}{const}\ Polynome\&\ p);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Polynome\&\ p1,\ \textcolor{keyword}{const}\ Polynome\&\ p2);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{friend}\ Polynome\ operator+(\textcolor{keyword}{const}\ Polynome\&\ p1,\ \textcolor{keyword}{const}\ Polynome\&\ p2);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \textcolor{keyword}{const}\ Polynome\&\ p);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <=\ degre)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ coef[i];}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Index\ out\ of\ range"{}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ To\ do:}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ -\/\ implement\ integration\ method(integrale)\ that\ returns\ the\ indefinite\ integral\ of\ the\ polynomial}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ -\/\ simplification\ de\ chaque\ polynome\ a\ chaque\ operatioin\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ \ \ \ \ pouvant\ produire\ un\ polynôme\ dont\ les\ monômes\ de\ plus\ haut\ degré\ peuvent\ être\ nuls\ }}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ -\/\ implement\ operator\ -\/}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ -\/\ implement\ operator\ *}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ -\/\ implement\ operator\ /\ (qui\ donne\ le\ polynome\ quotient)}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ -\/\ implement\ operator\ \%\ (qui\ donne\ le\ polynome\ reste)}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ -\/\ enhance\ operator\ <<\ to:}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ \ \ \ \ -\/\ ne\ pas\ afficher\ le\ '+'\ devant\ un\ monome\ si\ le\ coefficient\ est\ negatif}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ \ \ \ \ -\/\ ne\ pas\ afficher\ du\ tout\ les\ monomes\ dont\ le\ coefficient\ est\ nul\ }}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \ \ \ \ -\/\ ne\ pas\ afficher\ le\ coefficient\ s'il\ vaut\ +1}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ \ \ -\/\ n'afficher\ que\ '-\/'\ a\ la\ place\ du\ coefficient\ lorsqu'il\ vaut\ -\/1}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \ \ \ \ -\/\ ne\ pas\ afficher\ 'x\string^0'\ pour\ le\ monome\ constant\ }}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ \ \ \ -\/\ quand\ le\ polynome\ est\ constant\ (c'est\ a\ dire\ de\ degre\ 0),\ afficher\ seulement\ la\ constante}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ -\/\ enhance\ operator\ ()\ to\ use\ Horner's\ method\ for\ polynomial\ evaluation\ (without\ using\ std::pow)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}
