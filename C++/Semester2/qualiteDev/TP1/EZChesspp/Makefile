@@ -7,10 +7,8 @@ CXXFLAGS = -g -Wall -O0
 # Nom de l'exécutable
 EXEC = EZChess
 
-# Options d'édition de liens (selon l'OS)
+# Options d'édition de liens
 LDFLAGS = -lXext -lX11
-# Sous Windows (décommenter la ligne ci-dessous et commenter celle du dessus) :
-# LDFLAGS = -lgdi32 -lmsimg32
 
 # Liste des fichiers objets
 OBJ = AbstractPiece.o AbstractZone.o Bishop.o BlackAndWhitePiece.o \
