@@ -1,17 +1,13 @@
-# Makefile pour EZChesspp
-# Variables modifiables pour passer de Linux à Windows
-
 # Compilateur
 CXX = g++
 
 # Options de compilation
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -g -Wall -O0 
 
 # Nom de l'exécutable
 EXEC = EZChess
 
 # Options d'édition de liens (selon l'OS)
-# Sous Linux :
 LDFLAGS = -lXext -lX11
 # Sous Windows (décommenter la ligne ci-dessous et commenter celle du dessus) :
 # LDFLAGS = -lgdi32 -lmsimg32

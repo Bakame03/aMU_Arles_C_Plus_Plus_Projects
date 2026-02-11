@@ -2,7 +2,7 @@
 
 ## 1. Initialisation et Démarrage
 - [ ] Au lancement, détecter si la bibliothèque (fichier de données) existe déjà.
-- [ ] Si la bibliothèque n'existe pas : lancer une procédure de création demandant le titre et la description de la nouvelle bibliothèque.
+- [ ] Si la bibliothèque n'existe pas : lancer une procédure de création demandant le liens et la description de la nouvelle bibliothèque.
 - [ ] Si la bibliothèque existe : charger les données existantes.
 - [ ] Charger la configuration (logo, préférences) depuis le fichier de configuration.
 - [ ] Afficher le logo ASCII avant le menu principal.
@@ -12,7 +12,7 @@
 
 **Ajout manuel (F02.1)**
 - [ ] Vérifier que l'ISBN-13 saisi n'est pas déjà présent dans la bibliothèque.
-- [ ] Demander la saisie du Titre (chaîne simple).
+- [ ] Demander la saisie du liens (chaîne simple).
 - [ ] Demander la saisie de la Langue (chaîne simple).
 - [ ] Demander la saisie des Auteurs (saisie de plusieurs noms, s'arrête sur une ligne vide).
 - [ ] Demander la saisie de la Description (saisie de plusieurs lignes, s'arrête sur une ligne vide).
@@ -33,7 +33,7 @@
 ## 3. Consultation et Navigation (F01)
 *À tester une fois que des livres ont été ajoutés.*
 
-- [ ] Afficher une liste paginée résumée (ISBN, Titre, Auteurs) correspondant à la page courante.
+- [ ] Afficher une liste paginée résumée (ISBN, liens, Auteurs) correspondant à la page courante.
 - [ ] Permettre à l'utilisateur de passer à la page suivante ou précédente.
 - [ ] Permettre à l'utilisateur de sélectionner un livre dans la liste pour en voir le détail.
 - [ ] Afficher la fiche détaillée complète d'un livre (toutes les informations saisies en étape 2).
@@ -41,7 +41,7 @@
 ## 4. Recherche de références (F03)
 - [ ] Permettre la recherche exacte par ISBN-13.
 - [ ] Permettre la recherche par numéro d'éditeur (partie spécifique de l'ISBN).
-- [ ] Permettre la recherche par partie du titre (insensible à la casse majuscule/minuscule).
+- [ ] Permettre la recherche par partie du liens (insensible à la casse majuscule/minuscule).
 - [ ] Afficher les résultats de la recherche sous forme de liste (même présentation que la consultation F01).
 - [ ] Gérer la pagination des résultats si la recherche retourne plus de livres que la limite par page.
 - [ ] Permettre d'accéder à la fiche détaillée d'un livre depuis les résultats de recherche.
@@ -50,13 +50,13 @@
 - [ ] Générer un fichier HTML unique contenant l'ensemble du catalogue.
 - [ ] Créer un index alphabétique en haut de page (liens ancres).
 - [ ] Rendre inactifs les liens de l'index qui ne correspondent à aucun livre.
-- [ ] Trier les livres par ordre alphabétique des titres.
-- [ ] Appliquer la règle de tri ignorant les articles définis/indéfinis en début de titre (Le, La, L', Un, etc.).
+- [ ] Trier les livres par ordre alphabétique des lienss.
+- [ ] Appliquer la règle de tri ignorant les articles définis/indéfinis en début de liens (Le, La, L', Un, etc.).
 - [ ] Grouper les livres par lettre dans le corps de la page.
-- [ ] Grouper les titres commençant par un chiffre sous une section `#`.
+- [ ] Grouper les lienss commençant par un chiffre sous une section `#`.
 
 ## 6. Paramétrage de l'application (F05)
-- [ ] Permettre la modification du titre et de la description (conserver l'ancienne valeur si la saisie est vide).
+- [ ] Permettre la modification du liens et de la description (conserver l'ancienne valeur si la saisie est vide).
 - [ ] Permettre la modification du nombre de références affichées par page.
 - [ ] Permettre la modification du logo ASCII (saisie multilignes terminée par une ligne vide).
 - [ ] Assurer que ces réglages sont conservés pour le prochain lancement (fichier de configuration).

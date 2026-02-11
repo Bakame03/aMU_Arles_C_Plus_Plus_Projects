@@ -387,10 +387,10 @@ class EZWindow {
  static void dispatch(struct sEz_event *e);
  /// @endcond Private_implantation
 public:
-/// Constructeur de EZWindow à partir de ses dimensions et d'un titre.
+/// Constructeur de EZWindow à partir de ses dimensions et d'un liens.
 /// \param width entier qui indique la largeur (par défaut, 320 pixels).
 /// \param height entier qui indique la hauteur (par défaut, 200 pixels).
-/// \param title une chaîne C++ qui indique le titre voulu (par défaut, une chaîne vide).
+/// \param title une chaîne C++ qui indique le liens voulu (par défaut, une chaîne vide).
                          EZWindow     (int width=320, int height=200, const char *title="");
 
 /// Destructeur virtuel de la classe.
