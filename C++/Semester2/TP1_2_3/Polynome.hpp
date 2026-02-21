@@ -33,8 +33,6 @@ void afficher_etat(Polynome* emp[], int taille);
 int demander_emplacement(const std::string& message);
 
 
-
-
 // To do:
 // - implement integration method(integrale) that returns the indefinite integral of the polynomial
 // - simplification de chaque polynome a chaque operatioin 
