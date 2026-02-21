@@ -34,13 +34,8 @@ int demander_emplacement(const std::string& message);
 
 
 // To do:
-// - implement integration method(integrale) that returns the indefinite integral of the polynomial
-// - simplification de chaque polynome a chaque operatioin 
-//      pouvant produire un polynôme dont les monômes de plus haut degré peuvent être nuls 
-// - implement operator -
-// - implement operator *
-// - implement operator / (qui donne le polynome quotient)
-// - implement operator % (qui donne le polynome reste)
+// - multiplication par un réel 
+// - implement operator * multiplication deux deux polynômes 
 // - enhance operator << to:
 //     - ne pas afficher le '+' devant un monome si le coefficient est negatif
 //     - ne pas afficher du tout les monomes dont le coefficient est nul 
