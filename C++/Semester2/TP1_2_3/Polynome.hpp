@@ -6,7 +6,7 @@ private:
     unsigned int degre;
     double* coef;
 public:
-    Polynome(unsigned int _degre, double _coef[]);
+    Polynome(unsigned int _degre, const double _coef[]);
     ~Polynome();
     Polynome() = delete;
     Polynome(const Polynome& p);
@@ -17,6 +17,7 @@ public:
     Polynome& operator=(const Polynome& p);
     friend bool operator==(const Polynome& p1, const Polynome& p2);
     friend Polynome operator+(const Polynome& p1, const Polynome& p2);
+    friend Polynome operator-(const Polynome& p1, const Polynome& p2);
     friend std::ostream& operator<<(std::ostream& os, const Polynome& p);
     inline double& operator[](const int i) {
         if (i <= degre)
@@ -26,8 +27,10 @@ public:
         }
     }
     double operator()(double x);
-    friend void afficher(Polynome* tab_polynomes, int size);
 };
+
+void afficher_etat(Polynome* emp[], int taille);
+int demander_emplacement(const std::string& message);
 
 
 

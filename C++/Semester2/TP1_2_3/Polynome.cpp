@@ -2,7 +2,7 @@
 #include <cmath>
 #include "Polynome.hpp"
 
-Polynome::Polynome(unsigned int _degre, double _coef[])
+Polynome::Polynome(unsigned int _degre, const double _coef[])
     : degre(_degre), coef(nullptr) {
     coef = new double[degre + 1];
     for (unsigned int i = 0; i <= degre; ++i) 
@@ -106,6 +106,12 @@ Polynome operator+(const Polynome& p1, const Polynome& p2) {
     return p3;
 }
 
+Polynome operator-(const Polynome& p1, const Polynome& p2) {
+    Polynome p3(p1);
+    p3 -= p2;
+    return p3;
+}
+
 std::ostream& operator<<(std::ostream& os, const Polynome& p){
     for(unsigned int i = p.degre+1; i > 0; i--)
         os << "+" << p.coef[i-1] << "x^" << i-1 << " ";
@@ -120,11 +126,26 @@ double Polynome::operator()(double x) {
     return result;
 }
 
-void afficher(Polynome* tab_polynomes, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < tab_polynomes[i].degre + 1; j++) {
-            std::cout << tab_polynomes[i].coef[j] << " ";
+void afficher_etat(Polynome* emp[], int taille) {
+    std::cout << "\n================= ETAT DES EMPLACEMENTS =================" << std::endl;
+    for (int i = 0; i < taille; ++i) {
+        std::cout << "[" << i << "] : ";
+        if (emp[i] == nullptr) {
+            std::cout << "vide" << std::endl;
+        } else {
+            std::cout << "P(x) = " << *(emp[i]) << std::endl;
         }
-        std::cout << std::endl;
     }
+    std::cout << "=========================================================\n" << endl;
+}
+
+int demander_emplacement(const std::string& message) {
+    int index;
+    std::cout << message << " (0 a 9) : ";
+    std::cin >> index;
+    while (index < 0 || index > 9) {
+        std::cout << "Invalide. Veuillez entrer un entier entre 0 et 9 : ";
+        std::cin >> index;
+    }
+    return index;
 }
