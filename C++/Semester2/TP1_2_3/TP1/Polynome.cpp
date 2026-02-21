@@ -5,7 +5,7 @@
 Polynome::Polynome(unsigned int _degre, const double _coef[])
     : degre(_degre), coef(nullptr) {
     coef = new double[degre + 1];
-    for (unsigned int i = 0; i <= degre; ++i) 
+    for (unsigned int i = 0; i <= degre; i++) 
         coef[i] = _coef[i];
 }
 
@@ -13,11 +13,11 @@ Polynome::~Polynome() {
     delete[] coef;
 }
 
-// Original copy constructor implementation (From sctratch)
+// Original copy constructor implementation (From scratch)
 // Polynome::Polynome(const Polynome& p)
 //     : degre(p.degre), coef(nullptr) {
 //     coef = new double[degre + 1];
-//     for (unsigned int i = 0; i <= degre; ++i) 
+//     for (unsigned int i = 0; i <= degre; i++) 
 //         coef[i] = p.coef[i];
 // }
 
@@ -141,6 +141,7 @@ Polynome operator+(const Polynome& p1, const Polynome& p2) {
     // for (unsigned int i = 0; i <= small.degre; i++) {
     //     p3.coef[i] += small.coef[i];
     // }
+    
     // second way (Eric Remy style)
     p3 += small;
     return p3;
