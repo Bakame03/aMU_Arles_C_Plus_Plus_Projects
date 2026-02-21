@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "Polynome.hpp"
 
 int main() {
@@ -18,6 +17,8 @@ int main() {
         std::cout << "6. Deriver un polynome (Z = X.deriver())\n";
         std::cout << "7. Tester l'egalite de deux polynomes (X == Y)\n";
         std::cout << "8. Evaluer un polynome pour un reel donne ( y = P(x) )\n";
+        std::cout << "9. Multiplier un polynome par un reel (Z = X * a)\n";
+        std::cout << "10. Multiplier deux polynomes (Z = X * Y)\n";
         std::cout << "0. Quitter\n";
         std::cout << "Votre choix : ";
         std::cin >> choix;
@@ -130,6 +131,36 @@ int main() {
                     std::cout << "Resultat: P(" << x << ") = " << (*tab[index])(x) << "\n";
                 } else {
                     std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                }
+                break;
+            }
+            case 9: {
+                int id1 = demander_emplacement("Emplacement du polynome (X)");
+                int dest = demander_emplacement("Emplacement de destination (Z)");
+                
+                if (tab[id1] != nullptr) {
+                    double scalaire;
+                    std::cout << "Entrez la valeur du reel (a) : ";
+                    std::cin >> scalaire;
+                    if (tab[dest] != nullptr)
+                        delete tab[dest];
+                    tab[dest] = new Polynome(*tab[id1] * scalaire);
+                } else {
+                    std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                }
+                break;
+            }
+            case 10: {
+                int id1 = demander_emplacement("Emplacement du 1er polynome (X)");
+                int id2 = demander_emplacement("Emplacement du 2e polynome (Y)");
+                int dest = demander_emplacement("Emplacement de destination (Z)");
+                
+                if (tab[id1] != nullptr && tab[id2] != nullptr) {
+                    if (tab[dest] != nullptr)
+                        delete tab[dest];
+                    tab[dest] = new Polynome(*tab[id1] * *tab[id2]);
+                } else {
+                    std::cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
                 }
                 break;
             }

@@ -21,7 +21,7 @@ Polynome::~Polynome() {
 //         coef[i] = p.coef[i];
 // }
 
-// Using delegating constructor to avoid code duplication
+// Using delegating constructor to avoid code duplication (code vu en cours avec Mr. Remy)
 Polynome::Polynome(const Polynome& p)
     : Polynome(p.degre, p.coef) {
 }
@@ -57,6 +57,46 @@ Polynome& Polynome::operator-=(const Polynome& p) {
         for (unsigned int i = 0; i <= p.degre; i++)
             coef[i] -= p.coef[i];
     }
+    return *this;
+}
+
+Polynome& Polynome::operator*=(double scalaire) {
+    if (scalaire == 0.0) {
+        delete[] coef;
+        degre = 0;
+        coef = new double[1]{0.0};
+        return *this;
+    }
+    for (unsigned int i = 0; i <= degre; i++) {
+        coef[i] *= scalaire;
+    }
+    return *this;
+}
+
+Polynome& Polynome::operator*=(const Polynome& p) {
+    if ((degre == 0 && coef[0] == 0.0) || (p.degre == 0 && p.coef[0] == 0.0)) {
+        delete[] coef;
+        degre = 0;
+        coef = new double[1]{0.0};
+        return *this;
+    }
+
+    unsigned int newDegre = degre + p.degre;
+    double* newCoef = new double[newDegre + 1];
+    
+    for (unsigned int i = 0; i <= newDegre; i++) {
+        newCoef[i] = 0.0;
+    }
+
+    for (unsigned int i = 0; i <= degre; i++) {
+        for (unsigned int j = 0; j <= p.degre; j++) {
+            newCoef[i + j] += coef[i] * p.coef[j];
+        }
+    }
+
+    delete[] coef;
+    degre = newDegre;
+    coef = newCoef;
     return *this;
 }
 
@@ -112,9 +152,63 @@ Polynome operator-(const Polynome& p1, const Polynome& p2) {
     return p3;
 }
 
-std::ostream& operator<<(std::ostream& os, const Polynome& p){
-    for(unsigned int i = p.degre+1; i > 0; i--)
-        os << "+" << p.coef[i-1] << "x^" << i-1 << " ";
+Polynome operator*(const Polynome& p, double scalaire) {
+    Polynome p3(p);
+    p3 *= scalaire;
+    return p3;
+}
+
+Polynome operator*(double scalaire, const Polynome& p) {
+    return p * scalaire;
+}
+
+Polynome operator*(const Polynome& p1, const Polynome& p2) {
+    Polynome p3(p1);
+    p3 *= p2;
+    return p3;
+}
+
+std::ostream& operator<<(std::ostream& os, const Polynome& p) {
+    bool polynomeEstVide = true; 
+
+    for(int i = p.degre; i >= 0; i--) {
+        double coefficientCourant = p.coef[i];
+
+        if (coefficientCourant == 0.0) 
+            continue;
+        
+        polynomeEstVide = false; 
+        
+        if ((coefficientCourant > 0) && (i != p.degre)) 
+            os << "+";
+        else if (coefficientCourant < 0) {
+            os << "-";
+            coefficientCourant = -coefficientCourant; 
+        }
+        
+        if (i == 0) {
+            os << coefficientCourant;
+        } 
+        else {
+            // Si le chiffre n'est pas 1, on l'affiche. (ex: on n'ecrit pas 1x, on ecrit juste x)
+            if (coefficientCourant != 1.0) {
+                os << coefficientCourant;
+            }
+            
+            // Affichage de la puissance de x
+            if (i == 1) {
+                os << "x ";      // x a la puissance 1 est juste x
+            } else {
+                os << "x^" << i << " "; // x a une puissance superieure
+            }
+        }
+    }
+    
+    // Si on a fait toute la boucle et qu'on a rien affiche du tout, on affiche 0
+    if (polynomeEstVide == true) {
+        os << "0";
+    }
+    
     return os;
 }
 
