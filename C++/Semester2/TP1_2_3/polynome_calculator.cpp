@@ -9,33 +9,33 @@ int main() {
 
     do {
         afficher_etat(tab, TAILLE);
-        cout << "Que voulez-vous faire ?\n";
-        cout << "1. Creer / Ecraser un polynome dans un emplacement\n";
-        cout << "2. Additionner deux polynomes (Z = X + Y)\n";
-        cout << "3. Ajouter a un polynome (X += Y)\n";
-        cout << "4. Soustraire deux polynomes (Z = X - Y)\n";
-        cout << "5. Soustraire d'un polynome (X -= Y)\n";
-        cout << "6. Deriver un polynome (Z = X.deriver())\n";
-        cout << "7. Tester l'egalite de deux polynomes (X == Y)\n";
-        cout << "8. Evaluer un polynome pour un reel donne ( y = P(x) )\n";
-        cout << "9. Vider un emplacement\n";
-        cout << "0. Quitter\n";
-        cout << "Votre choix : ";
-        cin >> choix;
+        std::cout << "Que voulez-vous faire ?\n";
+        std::cout << "1. Creer / Ecraser un polynome dans un emplacement\n";
+        std::cout << "2. Additionner deux polynomes (Z = X + Y)\n";
+        std::cout << "3. Ajouter a un polynome (X += Y)\n";
+        std::cout << "4. Soustraire deux polynomes (Z = X - Y)\n";
+        std::cout << "5. Soustraire d'un polynome (X -= Y)\n";
+        std::cout << "6. Deriver un polynome (Z = X.deriver())\n";
+        std::cout << "7. Tester l'egalite de deux polynomes (X == Y)\n";
+        std::cout << "8. Evaluer un polynome pour un reel donne ( y = P(x) )\n";
+        std::cout << "9. Vider un emplacement\n";
+        std::cout << "0. Quitter\n";
+        std::cout << "Votre choix : ";
+        std::cin >> choix;
 
-        cout << endl; // Saut de ligne pour plus de lisibilite
+        std::cout << std::endl;
 
         switch (choix) {
             case 1: {
                 int index = demander_emplacement("Emplacement de destination");
                 unsigned int degre;
-                cout << "Entrez le degre du polynome : ";
-                cin >> degre;
+                std::cout << "Entrez le degre du polynome : ";
+                std::cin >> degre;
                 
                 double* coefs = new double[degre + 1];
                 for (unsigned int i = 0; i <= degre; ++i) {
-                    cout << "Coefficient pour x^" << i << " : ";
-                    cin >> coefs[i];
+                    std::cout << "Coefficient pour x^" << i << " : ";
+                    std::cin >> coefs[i];
                 }
                 
                 // Si l'emplacement contient deja un polynome, on le supprime (evite les fuites de memoire)
@@ -47,7 +47,7 @@ int main() {
                 tab[index] = new Polynome(degre, coefs);
                 delete[] coefs; // Le constructeur fait sa propre copie des coefficients
                 
-                cout << "Polynome cree avec succes ! \n";
+                std::cout << "Polynome cree avec succes ! \n";
                 break;
             }
             case 2: {
@@ -60,7 +60,7 @@ int main() {
                     // Utilisation de l'operateur + declare dans la classe
                     tab[dest] = new Polynome(*tab[id1] + *tab[id2]);
                 } else {
-                    cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
+                    std::cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
                 }
                 break;
             }
@@ -72,7 +72,7 @@ int main() {
                     // Utilisation de l'operateur +=
                     *tab[idDest] += *tab[idSrc];
                 } else {
-                    cout << "Erreur: les emplacements doivent contenir un polynome.\n";
+                    std::cout << "Erreur: les emplacements doivent contenir un polynome.\n";
                 }
                 break;
             }
@@ -86,7 +86,7 @@ int main() {
                     // Utilisation de l'operateur - 
                     tab[dest] = new Polynome(*tab[id1] - *tab[id2]);
                 } else {
-                    cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
+                    std::cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
                 }
                 break;
             }
@@ -98,7 +98,7 @@ int main() {
                     // Utilisation de l'operateur -=
                     *tab[idDest] -= *tab[idSrc];
                 } else {
-                    cout << "Erreur: les emplacements doivent contenir un polynome.\n";
+                    std::cout << "Erreur: les emplacements doivent contenir un polynome.\n";
                 }
                 break;
             }
@@ -111,7 +111,7 @@ int main() {
                     // Utilisation de la methode deriver()
                     tab[dest] = new Polynome(tab[idSrc]->deriver());
                 } else {
-                    cout << "Erreur: l'emplacement source doit contenir un polynome.\n";
+                    std::cout << "Erreur: l'emplacement source doit contenir un polynome.\n";
                 }
                 break;
             }
@@ -122,12 +122,12 @@ int main() {
                 if (tab[id1] != nullptr && tab[id2] != nullptr) {
                     // Utilisation de l'operateur ==
                     if (*tab[id1] == *tab[id2]) {
-                        cout << "-> Les deux polynomes sont EGAUX.\n";
+                        std::cout << "-> Les deux polynomes sont EGAUX.\n";
                     } else {
-                        cout << "-> Les deux polynomes sont DIFFERENTS.\n";
+                        std::cout << "-> Les deux polynomes sont DIFFERENTS.\n";
                     }
                 } else {
-                    cout << "Erreur: emplacements vides.\n";
+                    std::cout << "Erreur: emplacements vides.\n";
                 }
                 break;
             }
@@ -135,12 +135,12 @@ int main() {
                 int index = demander_emplacement("Emplacement du polynome");
                 if (tab[index] != nullptr) {
                     double x;
-                    cout << "Entrez la valeur de (x) : ";
-                    cin >> x;
+                    std::cout << "Entrez la valeur de (x) : ";
+                    std::cin >> x;
                     // Utilisation de l'operateur ()
-                    cout << "Resultat: P(" << x << ") = " << (*tab[index])(x) << "\n";
+                    std::cout << "Resultat: P(" << x << ") = " << (*tab[index])(x) << "\n";
                 } else {
-                    cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                    std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
                 }
                 break;
             }
@@ -149,17 +149,17 @@ int main() {
                 if (tab[index] != nullptr) {
                     delete tab[index];
                     tab[index] = nullptr;
-                    cout << "Emplacement " << index << " a ete vide avec succes.\n";
+                    std::cout << "Emplacement " << index << " a ete vide avec succes.\n";
                 } else {
-                    cout << "L'emplacement est deja vide.\n";
+                    std::cout << "L'emplacement est deja vide.\n";
                 }
                 break;
             }
             case 0:
-                cout << "Fermeture du programme...\n";
+                std::cout << "Fermeture du programme...\n";
                 break;
             default:
-                cout << "Choix invalide. Reessayez.\n";
+                std::cout << "Choix invalide. Reessayez.\n";
         }
     } while (choix != 0);
 

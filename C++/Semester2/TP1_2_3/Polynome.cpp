@@ -128,7 +128,7 @@ double Polynome::operator()(double x) {
 
 void afficher_etat(Polynome* emp[], int taille) {
     std::cout << "\n================= ETAT DES EMPLACEMENTS =================" << std::endl;
-    for (int i = 0; i < taille; ++i) {
+    for (int i = 0; i < taille; i++) {
         std::cout << "[" << i << "] : ";
         if (emp[i] == nullptr) {
             std::cout << "vide" << std::endl;
@@ -136,7 +136,7 @@ void afficher_etat(Polynome* emp[], int taille) {
             std::cout << "P(x) = " << *(emp[i]) << std::endl;
         }
     }
-    std::cout << "=========================================================\n" << endl;
+    std::cout << "=========================================================\n" << std::endl;
 }
 
 int demander_emplacement(const std::string& message) {
