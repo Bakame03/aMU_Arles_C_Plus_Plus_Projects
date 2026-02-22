@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./TP1/Polynome.hpp"
+#include "./exo1/Polynome.hpp"
 
 using namespace std;
 
