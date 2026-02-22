@@ -18,7 +18,7 @@
 using namespace std;
 
 #include "ez-draw++.hpp"
-#include "../Polynome.hpp" // Alex
+#include "Polynome.hpp" // Alex
 
 class Traceur : public EZWindow {
  Polynome p;                 // Alex
