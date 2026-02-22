@@ -27,7 +27,7 @@ public:
     friend Polynome operator*(const Polynome& p1, const Polynome& p2);
     friend std::ostream& operator<<(std::ostream& os, const Polynome& p);
     inline double& operator[](const int i) {
-        if (i <= degre)
+        if (i >= 0 && (unsigned int)i <= degre) // ici je fais un cast pour que i unsigned car il etait int et que degre est unsigned
             return coef[i];
         else {
             throw std::out_of_range("Index out of range");

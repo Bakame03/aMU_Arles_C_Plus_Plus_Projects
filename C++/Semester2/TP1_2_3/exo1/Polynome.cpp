@@ -180,7 +180,7 @@ std::ostream& operator<<(std::ostream& os, const Polynome& p) {
         
         polynomeEstVide = false; 
         
-        if ((coefficientCourant > 0) && (i != p.degre)) 
+        if ((coefficientCourant > 0) && (i != (int)p.degre)) // ici je fais un cast pour que p.degre soit un int car il est unsigned et que i est int
             os << "+";
         else if (coefficientCourant < 0) {
             os << "-";

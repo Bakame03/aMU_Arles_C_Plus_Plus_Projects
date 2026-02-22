@@ -18,7 +18,7 @@
 using namespace std;
 
 #include "ez-draw++.hpp"
-#include "../TP1/Polynome.hpp" // Alex
+#include "../Polynome.hpp" // Alex
 
 class Traceur : public EZWindow {
  Polynome p;                 // Alex
@@ -42,7 +42,7 @@ class Traceur : public EZWindow {
   for(int i=0;i<getWidth();i+=pixel_step)
    {
     double       x = double(i-0)*(xmax-xmin)/double(getWidth()-0)         + xmin; // On calcule le x reel correspondant a la colonne de pixel i.
-    double       y = func(x); // On declenche la fonction *f sur la coordonnee x et on stocke la valeur dans y.
+    double       y = p(x); // Alex, appele de l'operator() de Polynome pour calculer f(x)
 
     int j;
     if     (y < ymin) j = getWidth(); // Si y est trop petit, on force j a la ligne du bas.
@@ -127,23 +127,12 @@ public:
   { curi = -1; curj = -1; sendExpose(); }
 };
 
-//= La fonction carre =========================================================
-double carre(double x)
-{ return x*x; }
-
-//= La fonction poly ==========================================================
-double poly(double x)
-{ return -x*x*x+4*x*x-5*x+2; }
-
 //= La classe MyApplication dérivée de EZDraw =================================
 class MyApplication : public EZDraw {
-  Traceur wsinus,wcosinus,wcarre,wpoly;
+  Traceur wpoly1; // Alex
  public:
   MyApplication()
-   : wsinus  (640,480,"Sinus",            sin,  -3.5,+3.5, -1.2,+1.2, 3),
-     wcosinus(640,480,"Cosinus",          cos,  -3.5,+3.5, -1.2,+1.2, 3),
-     wcarre  (640,480,"y=x^2",            carre,-3.2,+3.2, -1.0,+10., 3),
-     wpoly   (640,480,"y=-x^3+4x^2-5x+2", poly, -1. ,+3. , -0.3,+0.5, 3)
+   : wpoly1(640,480,"Polynome 1 : y=-x^3+4x^2-5x+2", Polynome(3, new double[4]{2, -5, 4, -1}), -1. ,+3. , -0.3,+0.5, 3) // Alex
   {}
 };
 
