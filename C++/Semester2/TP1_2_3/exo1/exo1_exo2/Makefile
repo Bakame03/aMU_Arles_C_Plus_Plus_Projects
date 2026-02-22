@@ -30,3 +30,11 @@ ez-draw++.o: ez-draw++.cpp ez-draw++.hpp
 # Regle pour tout nettoyer
 clean:
 	rm -f *.o *.exe
+
+# Verifier les fuites memoire avec Valgrind (calculatrice)
+test_calculatrice: calculatrice.exe
+	valgrind --leak-check=full ./calculatrice.exe
+
+# Verifier les fuites memoire avec Valgrind (tracer)
+test_tracer: tracer.exe
+	valgrind --leak-check=full ./tracer.exe

@@ -9,3 +9,7 @@ make tracer.exe
 
 ## Instructions de nettoyage
 make clean
+
+## Tester la memoire avec Valgrind
+make test_calculatrice
+make test_tracer
