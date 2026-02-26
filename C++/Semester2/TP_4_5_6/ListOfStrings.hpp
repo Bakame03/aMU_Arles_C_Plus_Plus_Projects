@@ -1,4 +1,5 @@
-#ifndef LISTOFSTRINGS_HPP
+#ifndef __LISTOFSTRINGS_HPP__
+#define __LISTOFSTRINGS_HPP__
 
 #include <iostream>
 #include <string>
@@ -10,10 +11,21 @@ class ListOfStrings
         public:
             std::string value;
             StringNode* next;
-            StringNode(std::string v, StringNode* = nullptr);
+            StringNode(std::string, StringNode* = nullptr);
             StringNode(const StringNode&);
             ~StringNode();
     };
+
+    private:
+        size_t count;
+        StringNode* first;
+        StringNode* last;
+
+    public:
+        ListOfStrings();
+        ListOfStrings(const ListOfStrings&);
+        ~ListOfStrings();
+        inline size_t size() const { return count; };
 };
 
-#endif //LISTOFSTRINGS_HPP
+#endif //__LISTOFSTRINGS_HPP__
