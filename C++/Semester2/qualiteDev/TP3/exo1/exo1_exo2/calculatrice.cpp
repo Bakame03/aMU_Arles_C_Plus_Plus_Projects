@@ -176,8 +176,10 @@ int main() {
                     std::cin >> coef;
                     if (tab[id] != nullptr) {
                         tab[id]->operator[](degre) = coef;
-                        if (degre < 0 || (unsigned int)degre > tab[id]->getDegre())
-                            std::cout << "Erreur: le degre doit etre superieur ou egale a 0 et inferieur ou egale au degre du polynome.\n";     
+                        if (degre < 0 || (unsigned int)degre > tab[id]->getDegre()) {   
+                            std::cout << "Erreur: le degre doit etre superieur ou egale a 0 et inferieur ou egale au degre du polynome.\n" << std::endl;
+                            std::cout << "reessaie\n";    
+                        }
                     } else {
                         std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
                     }
