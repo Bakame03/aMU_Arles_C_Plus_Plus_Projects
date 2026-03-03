@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "Polynome.hpp"
 
 int main() {
@@ -167,23 +168,30 @@ int main() {
             }
             case 11: {
                 int id = demander_emplacement("Emplacement du polynome");
-                int degre;
-                double coef;
-                do {
-                    std::cout << "Entrez le degre du coefficient a modifier : ";
-                    std::cin >> degre;
-                    std::cout << "Entrez la nouvelle valeur du coefficient : ";
-                    std::cin >> coef;
-                    if (tab[id] != nullptr) {
-                        tab[id]->operator[](degre) = coef;
-                        if (degre < 0 || (unsigned int)degre > tab[id]->getDegre()) {   
-                            std::cout << "Erreur: le degre doit etre superieur ou egale a 0 et inferieur ou egale au degre du polynome.\n" << std::endl;
-                            std::cout << "reessaie\n";    
+                if (tab[id] != nullptr) {
+                    int degre;
+                    double coef;
+                    bool saisieValide = false;
+                    do {
+                        std::cout << "Entrez le degre du coefficient a modifier : ";
+                        std::cin >> degre;
+                        std::cout << "Entrez la nouvelle valeur du coefficient : ";
+                        std::cin >> coef;
+                        
+                        try {
+                            // On tente de modifier le coefficient
+                            (*tab[id])[degre] = coef;
+                            saisieValide = true; // Saisie correcte, on sort de la boucle
+                        } catch (const std::out_of_range& e) {
+                            // On capture l'exception lancee par operator[] 
+                            std::cout << "Erreur : " << e.what() << "\n";
+                            std::cout << "Le degre fourni est hors des limites acceptables pour ce polynome.\n";
+                            std::cout << "Veuillez recommencer votre saisie.\n\n";
                         }
-                    } else {
-                        std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
-                    }
-                } while (degre < 0 || (unsigned int)degre > tab[id]->getDegre());
+                    } while (!saisieValide);
+                } else {
+                    std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                }
                 break;
             }
             case 0:
