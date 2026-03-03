@@ -184,13 +184,13 @@ int main() {
                             saisieValide = true; // Saisie correcte, on sort de la boucle
                         } catch (const std::out_of_range& e) {
                             // On capture l'exception lancee par operator[] 
-                            std::cout << "Erreur : " << e.what() << "\n";
-                            std::cout << "Le degre fourni est hors des limites acceptables pour ce polynome.\n";
-                            std::cout << "Veuillez recommencer votre saisie.\n\n";
+                            std::cerr << "Erreur : " << e.what() << "\n";
+                            std::cerr << "Le degre fourni est hors des limites acceptables pour ce polynome.\n";
+                            std::cerr << "Veuillez recommencer votre saisie.\n\n";
                         }
                     } while (!saisieValide);
                 } else {
-                    std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                    std::cerr << "Erreur: l'emplacement doit contenir un polynome.\n";
                 }
                 break;
             }
