@@ -19,6 +19,7 @@ int main() {
         std::cout << "8. Evaluer un polynome pour un reel donne ( y = P(x) )\n";
         std::cout << "9. Multiplier un polynome par un reel (Z = X * a)\n";
         std::cout << "10. Multiplier deux polynomes (Z = X * Y)\n";
+        std::cout << "11. Modifier un coefficient d'un polynome\n";
         std::cout << "0. Quitter\n";
         std::cout << "Votre choix : ";
         std::cin >> choix;
@@ -162,6 +163,25 @@ int main() {
                 } else {
                     std::cout << "Erreur: les emplacements sources doivent contenir un polynome.\n";
                 }
+                break;
+            }
+            case 11: {
+                int id = demander_emplacement("Emplacement du polynome");
+                int degre;
+                double coef;
+                do {
+                    std::cout << "Entrez le degre du coefficient a modifier : ";
+                    std::cin >> degre;
+                    std::cout << "Entrez la nouvelle valeur du coefficient : ";
+                    std::cin >> coef;
+                    if (tab[id] != nullptr) {
+                        tab[id]->operator[](degre) = coef;
+                        if (degre < 0 || (unsigned int)degre > tab[id]->getDegre())
+                            std::cout << "Erreur: le degre doit etre superieur ou egale a 0 et inferieur ou egale au degre du polynome.\n";     
+                    } else {
+                        std::cout << "Erreur: l'emplacement doit contenir un polynome.\n";
+                    }
+                } while (degre < 0 || (unsigned int)degre > tab[id]->getDegre());
                 break;
             }
             case 0:
