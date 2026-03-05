@@ -2,6 +2,7 @@
 #define FENETRE_H
 
 #include <QWidget>
+#include <QDoubleSpinBox>
 
 class Fenetre : public QWidget
 {
@@ -10,5 +11,9 @@ class Fenetre : public QWidget
 public:
     Fenetre(QWidget *parent = nullptr);
     ~Fenetre();
+private:
+    QDoubleSpinBox* valeurMetre;
+    QDoubleSpinBox* valeurFoot;
+    QDoubleSpinBox* valeurInch;
 };
 #endif // FENETRE_H
