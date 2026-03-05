@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QDoubleSpinBox>
+#include <QVBoxLayout>
+#include <QFormLayout>
 
 class Fenetre : public QWidget
 {

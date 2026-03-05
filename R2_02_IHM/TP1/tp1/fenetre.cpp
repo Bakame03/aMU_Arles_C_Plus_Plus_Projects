@@ -20,6 +20,14 @@ Fenetre::Fenetre(QWidget *parent)
     valeurInch->setDecimals(5);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
+
+    QFormLayout *formLayout = new QFormLayout;
+    formLayout->addRow("mètre", valeurMetre);
+    formLayout->addRow("foot",  valeurFoot);
+    formLayout->addRow("inch",  valeurInch);
+
+    mainLayout->addLayout(formLayout);
+    setLayout(mainLayout);
 }
 
 Fenetre::~Fenetre() {}
