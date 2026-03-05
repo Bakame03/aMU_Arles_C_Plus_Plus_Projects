@@ -2,7 +2,7 @@
 
 Fenetre::Fenetre(QWidget *parent)
     : QWidget(parent)
-{
+{   
     setWindowTitle("ConvertDist");
     setWindowFlags(Qt::WindowStaysOnTopHint);
     resize(250,150);
@@ -18,6 +18,8 @@ Fenetre::Fenetre(QWidget *parent)
     valeurMetre->setDecimals(5);
     valeurFoot->setDecimals(5);
     valeurInch->setDecimals(5);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout;
 }
 
 Fenetre::~Fenetre() {}
