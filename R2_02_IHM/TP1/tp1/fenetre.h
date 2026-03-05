@@ -5,6 +5,7 @@
 #include <QDoubleSpinBox>
 #include <QVBoxLayout>
 #include <QFormLayout>
+#include <QHBoxLayout>
 
 class Fenetre : public QWidget
 {

@@ -27,6 +27,10 @@ Fenetre::Fenetre(QWidget *parent)
     formLayout->addRow("inch",  valeurInch);
 
     mainLayout->addLayout(formLayout);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    mainLayout->addLayout(buttonLayout);
+
     setLayout(mainLayout);
 }
 
