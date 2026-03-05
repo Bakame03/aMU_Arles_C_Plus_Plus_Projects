@@ -10,6 +10,14 @@ Fenetre::Fenetre(QWidget *parent)
     valeurMetre = new QDoubleSpinBox(this);
     valeurFoot = new QDoubleSpinBox(this);
     valeurInch = new QDoubleSpinBox(this);
+
+    valeurMetre->setMaximum(1000000);
+    valeurFoot->setMaximum(1000000);
+    valeurInch->setMaximum(1000000);
+
+    valeurMetre->setDecimals(5);
+    valeurFoot->setDecimals(5);
+    valeurInch->setDecimals(5);
 }
 
 Fenetre::~Fenetre() {}
